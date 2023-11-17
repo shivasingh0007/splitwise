@@ -1,0 +1,13 @@
+<!-- templates/expense_email_template.html -->
+<!DOCTYPE html>
+<html>
+<body>
+    <h2>New Expense Added</h2>
+    <p>Hello,</p>
+    <p>A new expense has been added:</p>
+    <p>Expense Name: {{ expense.name }}</p>
+    <p>Amount: {{ expense.amount }}</p>
+    <p>Payer: {{ expense.payer.username }}</p>
+    <p>Participants: {{ expense.participants.all|join:', ' }}</p>
+</body>
+</html>
