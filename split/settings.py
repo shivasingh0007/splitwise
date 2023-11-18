@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_celery_results',
     'corsheaders',
     'rest_framework',
     'rest_framework_simplejwt',
@@ -51,7 +52,8 @@ REST_FRAMEWORK = {
     )
 }
 
-# AUTH_USER_MODEL='splitapp.User'
+
+AUTH_USER_MODEL='splitapp.User'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -133,8 +135,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 
-# settings.py
-CELERY_BROKER_URL = 'redis://localhost:6379/0'
+
 
 
 import os
@@ -202,6 +203,10 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 # Celery Configuration Options
-# CELERY_TIMEZONE = "Asia/kolkata"
-# CELERY_TASK_TRACK_STARTED = True
-# CELERY_TASK_TIME_LIMIT = 30 * 60
+CELERY_TIMEZONE = "Asia/Kolkata"
+CELERY_TASK_TRACK_STARTED = True
+CELERY_TASK_TIME_LIMIT = 30 * 60
+CELERY_BROKER_URL = 'redis://localhost:6379/0'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
+CELERY_RESULT_BACKEND = 'django-db'
+
